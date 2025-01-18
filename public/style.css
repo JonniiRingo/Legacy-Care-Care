@@ -1,0 +1,19 @@
+.feature-icon{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+  }
+  
+      #carouselExampleIndicators > div.carousel-inner > div.carousel-item.active > img{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      .footer-iterms{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin:48px -12;
+  
+      }
