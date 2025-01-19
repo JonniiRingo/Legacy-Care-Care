@@ -3,10 +3,10 @@ import React from "react";
 
 function Carousel(){
     return(
-        <div class="container"> 
-        <div id="carouselExampleIndicators" class="carousel slide">
+        <div className="container"> 
+        <div id="carouselExampleIndicators" className="carousel slide">
           <div className="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
@@ -14,19 +14,19 @@ function Carousel(){
           <div className="carousel-inner">
     
             <div className="carousel-item active">
-              <img src="./assets/images/cad hood.png" class="d-block w-100" alt="couple"/>
+              <img src="./assets/images/cad hood.png" className="d-block w-100" alt="couple"/>
             </div>
     
             <div className="carousel-item">
-              <img src="./assets/images/vacuum.png" class="d-block w-100" alt="dog-in-box"/>
+              <img src="./assets/images/vacuum.png" className="d-block w-100" alt="dog-in-box"/>
             </div>
     
             <div className="carousel-item">
-              <img src="./assets/images/hero.png" class="d-block w-100" alt="family"/>
+              <img src="./assets/images/hero.png" className="d-block w-100" alt="family"/>
             </div>
     
             <div className="carousel-item">
-              <img src="./assets/images/tank.png" class="d-block w-100" alt="family"/>
+              <img src="./assets/images/tank.png" className="d-block w-100" alt="family"/>
             </div>
     
           </div>
@@ -44,3 +44,5 @@ function Carousel(){
         </div>
     )
 }
+
+export default Carousel;

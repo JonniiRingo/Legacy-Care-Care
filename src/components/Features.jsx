@@ -30,7 +30,7 @@ function Features(){
             <p>
               Born and raised in El Camino, we bring local pride and a community-driven work ethic to every car we touch. Our team knows what it means to hustle, and we’re here to make your ride look its absolute best.
             </p>
-            <a href="#" class="icon-link">
+            <a href="#" className="icon-link">
               Contact Us Today
               <img src="./chevron-right.svg" alt="chevron-right"/>
             </a>
@@ -44,7 +44,7 @@ function Features(){
             <p>
               We don’t believe in one-size-fits-all. From quick washes to full-detail packages, we customize our services to suit your car’s unique needs. Whether you drive a lowrider, a muscle car, or the family van, you’re in good hands.
             </p>
-            <a href="#" class="icon-link">
+            <a href="#" className="icon-link">
               Explore Our Packages
               <img src="./chevron-right.svg" alt="chevron-right"/>
             </a>
