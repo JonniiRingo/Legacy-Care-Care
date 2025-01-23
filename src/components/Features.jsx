@@ -9,7 +9,7 @@ function Features(){
         <div className="row g-4 py-5 row-cols-1 row-cols-lg-3">
           <div className="feature col">
             <div className="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-              <img src="./briefcase.svg" alt="briefcase" height={30}/>
+              <img src="assets/svg/car-front-fill.svg" alt="briefcase" height={30}/>
               
             </div>
             <h3 className="fs-2 text-body-emphasis">Passion for Classics</h3>
@@ -18,13 +18,13 @@ function Features(){
             </p>
             <a href="#" className="icon-link">
               Get Your Car Washed
-              <img src="./chevron-right.svg" alt="chevron-right"/>
+              <img src="assets/svg/chevron-right.svg" alt="chevron-right"/>
             </a>
           </div>
     
           <div className="feature col">
             <div className="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-              <img src="./chat-square-heart.svg" alt="chat-square-heart" height={30}/>
+              <img src="assets/svg/car-front.svg" alt="chat-square-heart" height={30}/>
             </div>
             <h3 className="fs-2 text-body-emphasis">World-Class Service</h3>
             <p>
@@ -32,13 +32,13 @@ function Features(){
             </p>
             <a href="#" className="icon-link">
               Contact Us Today
-              <img src="./chevron-right.svg" alt="chevron-right"/>
+              <img src="assets/svg/chevron-right.svg" alt="chevron-right"/>
             </a>
           </div>
     
           <div className="feature col">
             <div className="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3">
-              <img src="./chat-square-heart.svg" alt="chat-square-heart" height={30}/>
+              <img src="/assets/svg/chat-square-heart.svg" alt="chat-square-heart" height={30}/>
             </div>
             <h3 className="fs-2 text-body-emphasis">Custom Care Packages</h3>
             <p>
@@ -46,7 +46,7 @@ function Features(){
             </p>
             <a href="#" className="icon-link">
               Explore Our Packages
-              <img src="./chevron-right.svg" alt="chevron-right"/>
+              <img src="assets/svg/chevron-right.svg" alt="chevron-right"/>
             </a>
           </div>
         </div>
