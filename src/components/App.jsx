@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import Features from "./Features";
 import Footer from "./Footer";
-// import {Widget} from "./react-chat-widget"
+
 
 
 // Methods for the widget 
@@ -24,7 +24,6 @@ function App(){
             <Navbar />
             <Hero />
             <Features /> 
-            {/* <Widget /> */}
             <Footer />
         </div>
     )
