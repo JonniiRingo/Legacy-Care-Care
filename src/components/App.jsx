@@ -6,17 +6,6 @@ import Footer from "./Footer";
 
 
 
-// Methods for the widget 
-// import 'react-chat-widget/lib/styles.css';
-
-// function App() {
-//   const handleNewUserMessage = (newMessage) => {
-//     console.log(`New message incoming! ${newMessage}`);
-//     // Now send the message throught the backend API
-//   };
-
-
-
 
 function App(){
     return (
