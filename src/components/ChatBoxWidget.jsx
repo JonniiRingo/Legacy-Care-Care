@@ -45,6 +45,8 @@ const ChatboxWidget = () => {
       { sender: "bot", text: "", role: "assistant", content: "" },
     ]);
 
+    console.log(messages)
+
     const systemPrompt = `
 You are Legacy Car Care's Virtual Assistant, an intelligent chatbot designed to help users with car care service inquiries. Your role is to understand user intent, provide tailored service recommendations, and deliver clear, helpful responses.
 
@@ -92,23 +94,17 @@ Response:
     `;
 
     const pc = new Pinecone({
-      apiKey: process.env.PINECONE_API_KEY,
+      apiKey: import.meta.env.VITE_PINECONE_API_KEY,
     });
     const index = pc.index("ragforcars").namespace("car-data");
-    const openai = new OpenAI();
+    const openai = new OpenAI({apiKey: import.meta.env.VITE_OPENAI_API_KEY, dangerouslyAllowBrowser:true});
 
-    data = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify([...messages, { role: "user", content: message }]),
-    };
-
-    data = data.json();
+    let chatText = message;
+    console.log("Data")
+    console.log(chatText);
 
     // create embedding for the user's question
-    const text = data[data.length - 1].content;
+    const text = message;
     console.log("User query:", text);
     const embedding = await openai.embeddings.create({
       model: "text-embedding-3-large",
@@ -159,9 +155,9 @@ Response:
     console.log("Result string:" + resultString);
 
     // Combine user's question with Pinecone results
-    const lastMessage = data[data.length - 1];
+    const lastMessage = messages[messages.length - 1];
     const lastMessageContent = lastMessage.content + resultString;
-    const lastDataWithoutLastMessage = data.slice(0, data.length - 1);
+    const lastDataWithoutLastMessage = messages.slice(0, messages.length - 1);
 
     // Create chat completion request to OpenAI with the systemPrompt and the combined user query
     const completion = await openai.chat.completions.create({
@@ -173,6 +169,8 @@ Response:
       model: "gpt-3.5-turbo",
       stream: true,
     });
+    
+
   } catch (error) {
     console.error("Error querying Pinecone:", error);
   }
