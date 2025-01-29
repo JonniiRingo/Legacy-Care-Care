@@ -1,4 +1,6 @@
 import React, { useState,Fragment } from "react";
+import { Pinecone } from "@pinecone-database/pinecone";
+import OpenAI from "openai";
 
 const ChatboxWidget = () => {
   const [messages, setMessages] = useState([
@@ -102,6 +104,78 @@ Response:
       },
       body: JSON.stringify([...messages, { role: "user", content: message }]),
     };
+
+    data = data.json();
+
+    // create embedding for the user's question
+  const text = data[data.length - 1].content;
+  console.log("User query:", text);
+  const embedding = await openai.embeddings.create({
+    model: "text-embedding-3-large",
+    input: text,
+  });
+
+  try {
+    const results = await queryWithRetry(index, {
+      topK: 5,
+      includeMetadata: true,
+      vector: embedding.data[0].embedding,
+    });
+    // console.log("Pinecone results:", results);
+
+    // Process the Pinecone results into a readable string
+    let jsonArr = [];
+    let resultString = "";
+    results.matches.forEach((match) => {
+      console.log("SCORE")
+      console.log(match["score"])
+      const meta1 = match.metadata;
+      console.log("HEY")
+      console.log(meta1)
+      if (match["score"] >= 0.55){
+        if(match.metadata.MAKE === "Unsure"){
+          resultString += `Sorry, no results found.`
+        }
+        else{
+          const meta = match.metadata;
+          console.log("HEY")
+          console.log(meta)
+
+          jsonArr.push(meta);
+          resultString += `
+            Returned Results:
+            Car Type: ${meta.Car_Type}
+            Package Name: ${meta.Package_Name}
+            Pricing (USD): ${meta.Pricing_USD}
+            Estimated Service Duration Minutes: ${meta.Estimated_Service_Duration_Minutes}
+            \n`;
+        }
+      }
+    });
+    if (resultString === "") {
+      resultString = "No results found.";
+    }
+
+    console.log("Result string:" + resultString);
+
+    // Combine user's question with Pinecone results
+    const lastMessage = data[data.length - 1];
+    const lastMessageContent = lastMessage.content + resultString;
+    const lastDataWithoutLastMessage = data.slice(0, data.length - 1);
+
+    // Create chat completion request to OpenAI with the systemPrompt and the combined user query
+    const completion = await openai.chat.completions.create({
+      messages: [
+        { role: "system", content: systemPrompt },
+        ...lastDataWithoutLastMessage,
+        { role: "user", content: lastMessageContent },
+      ],
+      model: "gpt-3.5-turbo",
+      stream: true,
+    });
+  } catch (error) {
+    console.error("Error querying Pinecone:", error);
+  }
 
     const response = fetch("/api/chat", {
       method: "POST",
