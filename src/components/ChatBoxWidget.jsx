@@ -127,10 +127,10 @@ const ChatboxWidget = () => {
               type="text"
               placeholder="Type your message..."
               value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
+              onChange={(e) => setMessage(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleSend()}
             />
-            <button style={styles.sendButton} onClick={handleSend}>
+            <button style={styles.sendButton} onClick={sendMessage}>
               Send
             </button>
           </div>
