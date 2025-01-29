@@ -41,140 +41,66 @@ const ChatboxWidget = () => {
     setMessage("");
     setMessages((messages) => [
       ...messages,
-      { sender:"user", text: message, role: "user", content: message },
-      { sender: "bot", text: "", role: "assistant", content: "" },
+      { role: "user", content: message },
+      { role: "assistant", content: "" },
     ]);
 
-    console.log(messages)
+    const response = fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify([...messages, { role: "user", content: message }]),
+    }).then(async (res) => {
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let result = "";
 
-    const systemPrompt = `
-You are Legacy Car Care's Virtual Assistant, an intelligent chatbot designed to help users with car care service inquiries. Your role is to understand user intent, provide tailored service recommendations, and deliver clear, helpful responses.
-
-Instructions for Behavior:
-Understand User Intent:
-
-Use natural language processing (NLP) to interpret user requests.
-Identify key parameters:
-Car Type: E.g., sedan, truck, classic car.
-Service Package: E.g., "Sedan Shine," "Deluxe Wax."
-Additional Options: E.g., waxing, clay bar treatment, tire shine.
-Query the Database:
-
-Map user requests to database entries based on:
-Car type.
-Service package.
-Optional features.
-Fetch pricing, service duration, and package details.
-Calculate and Present Estimates:
-
-Provide a detailed estimate including:
-Base price for the selected package.
-Additional costs for optional features.
-Total estimated service duration.
-Format responses like:
-"The 'Deluxe Wax' package for your classic car costs $85 and takes approximately 2 hours. Would you like to proceed?"
-Handle Edge Cases:
-
-If user input is ambiguous or incomplete:
-Suggest clarifications: "Did you mean a sedan or a classic car?"
-Offer default options or escalate to a human assistant if needed.
-Recommend Upgrades:
-
-Analyze user preferences for potential package upgrades or additional services.
-Suggest premium options:
-"Would you like to add a tire shine to your package for an additional $10?"
-Maintain Friendly, Professional Tone:
-
-Ensure responses are polite, concise, and user-friendly.
-Anticipate user questions and provide helpful follow-ups.
-Example Workflow:
-User Input: "I have a classic car. Can I get a wax job?"
-Response:
-"We recommend the 'Classic Shine' package for your classic car, which includes waxing and detailing for $120. It will take approximately 2.5 hours. Would you like to proceed?"
-    `;
-
-    const pc = new Pinecone({
-      apiKey: import.meta.env.VITE_PINECONE_API_KEY,
-    });
-    const index = pc.index("ragforcars").namespace("car-data");
-    const openai = new OpenAI({apiKey: import.meta.env.VITE_OPENAI_API_KEY, dangerouslyAllowBrowser:true});
-
-    let chatText = message;
-    console.log("Data")
-    console.log(chatText);
-
-    // create embedding for the user's question
-    const text = message;
-    console.log("User query:", text);
-    const embedding = await openai.embeddings.create({
-      model: "text-embedding-3-large",
-      input: text,
-    });
-
-  try {
-    const results = await queryWithRetry(index, {
-      topK: 5,
-      includeMetadata: true,
-      vector: embedding.data[0].embedding,
-    });
-    // console.log("Pinecone results:", results);
-
-    // Process the Pinecone results into a readable string
-    let jsonArr = [];
-    let resultString = "";
-    results.matches.forEach((match) => {
-      console.log("SCORE")
-      console.log(match["score"])
-      const meta1 = match.metadata;
-      console.log("HEY")
-      console.log(meta1)
-      if (match["score"] >= 0.55){
-        if(match.metadata.MAKE === "Unsure"){
-          resultString += `Sorry, no results found.`
+      return reader.read().then(async function processText({ done, value }) {
+        if (done) {
+          return result;
         }
-        else{
-          const meta = match.metadata;
-          console.log("HEY")
-          console.log(meta)
+        const text = decoder.decode(value || new Uint8Array(), {
+          stream: true,
+        });
 
-          jsonArr.push(meta);
-          resultString += `
-            Returned Results:
-            Car Type: ${meta.Car_Type}
-            Package Name: ${meta.Package_Name}
-            Pricing (USD): ${meta.Pricing_USD}
-            Estimated Service Duration Minutes: ${meta.Estimated_Service_Duration_Minutes}
-            \n`;
+        if (!ranFirst) {
+          // console.log("I AM RUNNING INIHIHIHol")
+          // console.log(text)
+          let string = text.substring(0, text.lastIndexOf("}")+1)
+          //Right here, we have to figure out if the professors are saved in the firebase
+          console.log("I AM THIS STRING:")
+          console.log(string)
+          let lis = [];
+          console.log(text)
+          ranFirst = true;
+          
+          setFirstMessage(JSON.parse(string));
+          console.log(JSON.parse(string));
+          let stri = text.substring(text.lastIndexOf("}")+1, text.length)
+          setMessages((messages) => {
+            let lastMessage = messages[messages.length - 1];
+            let otherMessages = messages.slice(0, messages.length - 1);
+            return [
+              ...otherMessages,
+              { ...lastMessage, content: lastMessage.content + stri },
+            ];
+          });
+        } else {
+          setMessages((messages) => {
+            let lastMessage = messages[messages.length - 1];
+            let otherMessages = messages.slice(0, messages.length - 1);
+            return [
+              ...otherMessages,
+              { ...lastMessage, content: lastMessage.content + text },
+            ];
+          });
         }
-      }
+
+        return reader.read().then(processText);
+      });
     });
-    if (resultString === "") {
-      resultString = "No results found.";
-    }
-
-    console.log("Result string:" + resultString);
-
-    // Combine user's question with Pinecone results
-    const lastMessage = messages[messages.length - 1];
-    const lastMessageContent = lastMessage.content + resultString;
-    const lastDataWithoutLastMessage = messages.slice(0, messages.length - 1);
-
-    // Create chat completion request to OpenAI with the systemPrompt and the combined user query
-    const completion = await openai.chat.completions.create({
-      messages: [
-        { role: "system", content: systemPrompt },
-        ...lastDataWithoutLastMessage,
-        { role: "user", content: lastMessageContent },
-      ],
-      model: "gpt-3.5-turbo",
-      stream: true,
-    });
-    
-
-  } catch (error) {
-    console.error("Error querying Pinecone:", error);
-  }
-  }
+  };
 
   const toggleChatbox = () => {
     setIsOpen(!isOpen);

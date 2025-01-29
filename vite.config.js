@@ -6,5 +6,13 @@ export default defineConfig({
   plugins: [react()],
   define: {
     global: 'globalThis'
-  }
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000', // Backend server URL
+        changeOrigin: true,             // Needed for proxying
+      },
+    },
+  },
 })
