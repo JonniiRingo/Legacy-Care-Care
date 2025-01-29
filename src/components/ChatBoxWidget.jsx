@@ -17,8 +17,8 @@ const ChatboxWidget = () => {
     setMessage("");
     setMessages((messages) => [
       ...messages,
-      { role: "user", content: message },
-      { role: "assistant", content: "" },
+      { sender:"user", text: message, role: "user", content: message },
+      { sender: "bot", text: "", role: "assistant", content: "" },
     ]);
 
     const response = fetch("/api/chat", {
@@ -126,7 +126,7 @@ const ChatboxWidget = () => {
               style={styles.input}
               type="text"
               placeholder="Type your message..."
-              value={userInput}
+              value={message}
               onChange={(e) => setMessage(e.target.value)}
               onKeyPress={(e) => e.key === "Enter" && handleSend()}
             />
