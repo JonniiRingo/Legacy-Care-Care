@@ -108,12 +108,12 @@ Response:
     data = data.json();
 
     // create embedding for the user's question
-  const text = data[data.length - 1].content;
-  console.log("User query:", text);
-  const embedding = await openai.embeddings.create({
-    model: "text-embedding-3-large",
-    input: text,
-  });
+    const text = data[data.length - 1].content;
+    console.log("User query:", text);
+    const embedding = await openai.embeddings.create({
+      model: "text-embedding-3-large",
+      input: text,
+    });
 
   try {
     const results = await queryWithRetry(index, {
@@ -176,63 +176,7 @@ Response:
   } catch (error) {
     console.error("Error querying Pinecone:", error);
   }
-
-    const response = fetch("/api/chat", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify([...messages, { role: "user", content: message }]),
-    }).then(async (res) => {
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let result = "";
-
-      return reader.read().then(async function processText({ done, value }) {
-        if (done) {
-          return result;
-        }
-        const text = decoder.decode(value || new Uint8Array(), {
-          stream: true,
-        });
-
-        if (!ranFirst) {
-          // console.log("I AM RUNNING INIHIHIHol")
-          // console.log(text)
-          let string = text.substring(0, text.lastIndexOf("}")+1)
-          //Right here, we have to figure out if the professors are saved in the firebase
-          console.log("I AM THIS STRING:")
-          console.log(string)
-          let lis = [];
-          console.log(text)
-          ranFirst = true;
-          
-          setFirstMessage(JSON.parse(string));
-          console.log(JSON.parse(string));
-          let stri = text.substring(text.lastIndexOf("}")+1, text.length)
-          setMessages((messages) => {
-            let lastMessage = messages[messages.length - 1];
-            let otherMessages = messages.slice(0, messages.length - 1);
-            return [
-              ...otherMessages,
-              { ...lastMessage, content: lastMessage.content + stri },
-            ];
-          });
-        } else {
-          setMessages((messages) => {
-            let lastMessage = messages[messages.length - 1];
-            let otherMessages = messages.slice(0, messages.length - 1);
-            return [
-              ...otherMessages,
-              { ...lastMessage, content: lastMessage.content + text },
-            ];
-          });
-        }
-
-        return reader.read().then(processText);
-      });
-    });
-  };
+  }
 
   const toggleChatbox = () => {
     setIsOpen(!isOpen);
