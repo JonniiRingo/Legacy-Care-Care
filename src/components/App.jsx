@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import Features from "./Features";
 import Footer from "./Footer";
-import { useRouter } from 'next/navigation'
+import { Widget } from 'react-chat-widget';
 // import {Widget} from "./react-chat-widget"
 
 
@@ -20,13 +20,13 @@ import { useRouter } from 'next/navigation'
 
 
 function App(){
-    const router = useRouter()
     return (
         <div>
             <Navbar />
             <Hero />
             <Features /> 
             {/* <Widget /> */}
+            <Widget/>
             <Footer />
         </div>
     )
