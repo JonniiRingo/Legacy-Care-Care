@@ -5,7 +5,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import styled from 'styled-components';
 
-export default function ChatBotTemp() {
+function ChatBotTemp() {
 
   const [messages, setMessages] = useState([
     {
@@ -169,3 +169,5 @@ export default function ChatBotTemp() {
     </Box>
   );
 }
+
+export default ChatBotTemp();
