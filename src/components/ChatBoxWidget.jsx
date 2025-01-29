@@ -4,7 +4,7 @@ import OpenAI from "openai";
 
 const ChatboxWidget = () => {
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Welcome! How can I help you today?" },
+    { role: "assistant", content: "Welcome! How can I help you today?" },
   ]);
   const [userInput, setUserInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -13,28 +13,7 @@ const ChatboxWidget = () => {
   const [firstMessage, setFirstMessage] = useState(null);
   let ranFirst = false;
 
-  async function queryWithRetry(index, queryParams, retries = 0) {
-    const MAX_RETRIES = 3;
-    const RETRY_DELAY = 1000; // 1 second
-    try {
-      const results = await index.query(queryParams);
-      return results;
-    } catch (error) {
-      if (retries < MAX_RETRIES) {
-        console.log(
-          `Query failed. Retrying in ${RETRY_DELAY}ms... (Attempt ${
-            retries + 1
-          }/${MAX_RETRIES})`
-        );
-        await new Promise((resolve) => setTimeout(resolve, RETRY_DELAY));
-        return queryWithRetry(index, queryParams, retries + 1);
-      } else {
-        console.error("Max retries reached. Query failed:", error);
-        throw error;
-      }
-    }
-  }
-
+  //* THIS CODE HERE IS WHAT I ADDED
   const sendMessage = async (e) => {
     e.preventDefault();
 
@@ -44,6 +23,8 @@ const ChatboxWidget = () => {
       { role: "user", content: message },
       { role: "assistant", content: "" },
     ]);
+
+    console.log(messages)
 
     const response = fetch("/api/chat", {
       method: "POST",
@@ -102,6 +83,8 @@ const ChatboxWidget = () => {
     });
   };
 
+  // TO HERE
+
   const toggleChatbox = () => {
     setIsOpen(!isOpen);
   };
@@ -135,13 +118,13 @@ const ChatboxWidget = () => {
                 key={index}
                 style={{
                   ...styles.message,
-                  alignSelf: msg.sender === "user" ? "flex-end" : "flex-start",
+                  alignSelf: msg.role === "user" ? "flex-end" : "flex-start",
                   backgroundColor:
-                    msg.sender === "user" ? "#007bff" : "#e9ecef",
-                  color: msg.sender === "user" ? "#fff" : "#000",
+                    msg.role === "user" ? "#007bff" : "#e9ecef",
+                  color: msg.role === "user" ? "#fff" : "#000",
                 }}
               >
-                {msg.text}
+                {msg.content}
               </div>
             ))}
           </div>
