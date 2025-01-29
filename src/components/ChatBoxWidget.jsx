@@ -1,11 +1,89 @@
-import React, { useState } from "react";
+import React, { useState,Fragment } from "react";
+import { Pinecone } from "@pinecone-database/pinecone";
+import OpenAI from "openai";
 
 const ChatboxWidget = () => {
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Welcome! How can I help you today?" },
+    { role: "assistant", content: "Welcome! How can I help you today?" },
   ]);
   const [userInput, setUserInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+
+  const [message, setMessage] = useState("");
+  const [firstMessage, setFirstMessage] = useState(null);
+  let ranFirst = false;
+
+  //* THIS CODE HERE IS WHAT I ADDED
+  const sendMessage = async (e) => {
+    e.preventDefault();
+
+    setMessage("");
+    setMessages((messages) => [
+      ...messages,
+      { role: "user", content: message },
+      { role: "assistant", content: "" },
+    ]);
+
+    console.log(messages)
+
+    const response = fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify([...messages, { role: "user", content: message }]),
+    }).then(async (res) => {
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let result = "";
+
+      return reader.read().then(async function processText({ done, value }) {
+        if (done) {
+          return result;
+        }
+        const text = decoder.decode(value || new Uint8Array(), {
+          stream: true,
+        });
+
+        if (!ranFirst) {
+          // console.log("I AM RUNNING INIHIHIHol")
+          // console.log(text)
+          let string = text.substring(0, text.lastIndexOf("}")+1)
+          //Right here, we have to figure out if the professors are saved in the firebase
+          console.log("I AM THIS STRING:")
+          console.log(string)
+          let lis = [];
+          console.log(text)
+          ranFirst = true;
+          
+          setFirstMessage(JSON.parse(string));
+          console.log(JSON.parse(string));
+          let stri = text.substring(text.lastIndexOf("}")+1, text.length)
+          setMessages((messages) => {
+            let lastMessage = messages[messages.length - 1];
+            let otherMessages = messages.slice(0, messages.length - 1);
+            return [
+              ...otherMessages,
+              { ...lastMessage, content: lastMessage.content + stri },
+            ];
+          });
+        } else {
+          setMessages((messages) => {
+            let lastMessage = messages[messages.length - 1];
+            let otherMessages = messages.slice(0, messages.length - 1);
+            return [
+              ...otherMessages,
+              { ...lastMessage, content: lastMessage.content + text },
+            ];
+          });
+        }
+
+        return reader.read().then(processText);
+      });
+    });
+  };
+
+  // TO HERE
 
   const toggleChatbox = () => {
     setIsOpen(!isOpen);
@@ -40,13 +118,13 @@ const ChatboxWidget = () => {
                 key={index}
                 style={{
                   ...styles.message,
-                  alignSelf: msg.sender === "user" ? "flex-end" : "flex-start",
+                  alignSelf: msg.role === "user" ? "flex-end" : "flex-start",
                   backgroundColor:
-                    msg.sender === "user" ? "#007bff" : "#e9ecef",
-                  color: msg.sender === "user" ? "#fff" : "#000",
+                    msg.role === "user" ? "#007bff" : "#e9ecef",
+                  color: msg.role === "user" ? "#fff" : "#000",
                 }}
               >
-                {msg.text}
+                {msg.content}
               </div>
             ))}
           </div>
@@ -55,11 +133,11 @@ const ChatboxWidget = () => {
               style={styles.input}
               type="text"
               placeholder="Type your message..."
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSend()}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              onKeyPress={(e) => e.key === "Enter" && handleSend()}
             />
-            <button style={styles.sendButton} onClick={handleSend}>
+            <button style={styles.sendButton} onClick={sendMessage}>
               Send
             </button>
           </div>

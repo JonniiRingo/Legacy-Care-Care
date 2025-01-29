@@ -10,6 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.1",
+    "@mui/material": "^6.4.1",
+    "@pinecone-database/pinecone": "^4.1.0",
+    "express": "^4.21.2",
+    "openai": "^4.80.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -22,5 +29,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "vite": "^5.1.4"
+  },
+  "resolutions": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
   }
 }

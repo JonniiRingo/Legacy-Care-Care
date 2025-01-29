@@ -5,8 +5,7 @@ import Features from "./Features";
 import ChatboxWidget from "./ChatBoxWidget";
 import Carousel from "./Carousel";
 import Footer from "./Footer";
-
-
+import ChatBotTemp from "./ChatBoxWidget";
 
 
 function App(){
@@ -16,7 +15,8 @@ function App(){
             <Hero />
             <Features /> 
             <ChatboxWidget />
-            <Carousel />                     
+            <Carousel />
+            <ChatBotTemp />                 
             <Footer />
         </div>
     )
