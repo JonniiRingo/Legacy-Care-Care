@@ -3,7 +3,6 @@ import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
 import { useState, Fragment } from "react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import styled from 'styled-components';
 
 function ChatBotTemp() {
 
