@@ -12,6 +12,8 @@ const ChatboxWidget = () => {
   let ranFirst = false;
 
   async function queryWithRetry(index, queryParams, retries = 0) {
+    const MAX_RETRIES = 3;
+    const RETRY_DELAY = 1000; // 1 second
     try {
       const results = await index.query(queryParams);
       return results;
@@ -87,8 +89,19 @@ Response:
 "We recommend the 'Classic Shine' package for your classic car, which includes waxing and detailing for $120. It will take approximately 2.5 hours. Would you like to proceed?"
     `;
 
-    const MAX_RETRIES = 3;
-    const RETRY_DELAY = 1000; // 1 second
+    const pc = new Pinecone({
+      apiKey: process.env.PINECONE_API_KEY,
+    });
+    const index = pc.index("ragforcars").namespace("car-data");
+    const openai = new OpenAI();
+
+    data = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify([...messages, { role: "user", content: message }]),
+    };
 
     const response = fetch("/api/chat", {
       method: "POST",
