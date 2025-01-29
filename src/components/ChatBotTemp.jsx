@@ -1,18 +1,18 @@
 'use client'
 import { Box, Button, Grid, Stack, TextField, Typography } from "@mui/material";
-import { useState, Fragment } from "react";
+// import React, { useState, Fragment } from "react";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+// import React, { useState } from 'react';
 
 function ChatBotTemp() {
 
-  const [messages, setMessages] = useState([
+  const [messagess, setMessagess] = useState([
     {
       role: "assistant",
       content: `Hi! I'm the Car Department Bot. How can I help you today?`,
     },
   ]);
-  // const { isLoaded, isSignedIn, user } = useUser()
   const [message, setMessage] = useState("");
   const [firstMessage, setFirstMessage] = useState(null);
   let ranFirst = false;
