@@ -1,9 +1,10 @@
 //dependencies
-const express = require('express');
-const {body, validationResult} = require('express-validator');
-const {createClient} = require('@supabase/supabase-js');
-const cors = require('cors');
-require('dotenv').config();
+import express from "express"; 
+import {body, validationResult} from 'express-validator';
+import {createClient} from '@supabase/supabase-js';
+import cors from 'cors';
+import dotenv from 'dotenv'; 
+dotenv.config();
 
 //declare cors, express, and port
 //cors is needed in case of different ports
