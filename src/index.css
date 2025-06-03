@@ -1,0 +1,132 @@
+@tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    @layer base {
+      :root {
+        --background: 240 10% 3.9%; /* Very Dark Blue - Almost Black */
+        --foreground: 0 0% 98%; /* Light Gray - Almost White */
+
+        --card: 240 8% 10%; /* Darker card background */
+        --card-foreground: 0 0% 95%; /* Lighter card text */
+
+        --popover: 240 10% 3.9%;
+        --popover-foreground: 0 0% 98%;
+
+        --primary: 350 80% 55%; /* Retro Red */
+        --primary-foreground: 0 0% 100%; /* White */
+        
+        --secondary: 200 90% 50%; /* Classic Teal/Aqua */
+        --secondary-foreground: 240 10% 3.9%; /* Dark for contrast */
+
+        --muted: 240 5% 18%; /* Dark Muted Gray */
+        --muted-foreground: 240 5% 65%; /* Lighter Muted Text */
+
+        --accent: 45 90% 55%; /* Vintage Gold/Yellow */
+        --accent-foreground: 240 10% 3.9%;
+
+        --destructive: 0 70% 50%; /* Deeper Red for destructive actions */
+        --destructive-foreground: 0 0% 100%;
+
+        --border: 240 4% 20%; /* Darker border */
+        --input: 240 4% 15%; /* Darker input */
+        --ring: 350 80% 55%; /* Primary color for focus rings */
+
+        --radius: 0.5rem; /* Slightly sharper edges for retro feel */
+
+        /* Greaser Pisa Angelino Palette */
+        --greaser-red: 350 80% 55%;
+        --greaser-teal: 200 90% 50%;
+        --greaser-cream: 35 50% 90%;
+        --greaser-charcoal: 240 10% 15%;
+        --greaser-silver: 210 10% 70%;
+        --greaser-gold: 45 90% 55%;
+      }
+
+      /* Light mode can be an alternative, but we're focusing on dark for the greaser vibe */
+      .light {
+        --background: 0 0% 98%; 
+        --foreground: 240 10% 3.9%;
+
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 3.9%;
+
+        --popover: 0 0% 100%;
+        --popover-foreground: 240 10% 3.9%;
+
+        --primary: 350 70% 50%;
+        --primary-foreground: 0 0% 100%;
+        
+        --secondary: 200 80% 45%;
+        --secondary-foreground: 0 0% 100%;
+
+        --muted: 240 5% 96.1%;
+        --muted-foreground: 240 3.8% 46.1%;
+
+        --accent: 45 80% 50%;
+        --accent-foreground: 240 10% 3.9%;
+
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+
+        --border: 240 5.9% 90%;
+        --input: 240 5.9% 90%;
+        --ring: 350 70% 50%;
+      }
+    }
+
+    @layer base {
+      * {
+        @apply border-border;
+      }
+      body {
+        @apply bg-background text-foreground;
+        font-family: 'Roboto Slab', serif; /* More retro/slab serif font */
+      }
+      h1, h2, h3, h4, h5, h6 {
+        @apply font-semibold tracking-tight;
+      }
+      h1 { @apply text-4xl lg:text-5xl; }
+      h2 { @apply text-3xl; }
+      h3 { @apply text-2xl; }
+      
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: hsl(var(--greaser-charcoal));
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: hsl(var(--primary) / 0.7);
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: hsl(var(--primary));
+      }
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&family=Lobster&family=Bangers&display=swap');
+
+    body {
+      font-family: 'Roboto Slab', serif;
+    }
+
+    h1, h2, .font-bangers { /* Bangers for a graffiti/tattoo feel for main headings */
+      font-family: 'Bangers', cursive;
+      letter-spacing: 0.05em;
+    }
+    
+    .font-lobster { /* Lobster for script/accent text */
+        font-family: 'Lobster', cursive;
+    }
+
+    .text-shadow-hard {
+      text-shadow: 2px 2px 0px hsl(var(--greaser-charcoal)), 
+                   4px 4px 0px hsl(var(--primary) / 0.5);
+    }
+    .text-shadow-soft {
+      text-shadow: 1px 1px 2px hsl(var(--greaser-charcoal) / 0.7);
+    }
+    
