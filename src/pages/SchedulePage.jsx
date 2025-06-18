@@ -7,14 +7,17 @@ import React, { useState } from 'react';
     import { Textarea } from '@/components/ui/textarea';
     import { useToast } from '@/components/ui/use-toast';
     import { motion } from 'framer-motion';
+    import { useNavigate } from 'react-router-dom';
     import { Car, CalendarDays, Clock, MapPin, User, MessageSquare } from 'lucide-react';
 
+    
     const timeSlots = [
       "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
       "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"
     ];
 
     const SchedulePage = () => {
+      const navigate = useNavigate()
       const [selectedDate, setSelectedDate] = useState(new Date());
       const [selectedTime, setSelectedTime] = useState('');
       const [name, setName] = useState('');
@@ -32,6 +35,7 @@ import React, { useState } from 'react';
             description: "Gotta fill out all the main fields to book your shine.",
             variant: "destructive",
             className: "bg-destructive text-destructive-foreground border-greaser-red font-sans",
+
           });
           return;
         }
@@ -67,6 +71,7 @@ import React, { useState } from 'react';
         setAddress('');
         setVehicleDetails('');
         setSpecialRequests('');
+        navigate('/checkout', {state: { bookingDetails } });
       };
 
       return (
