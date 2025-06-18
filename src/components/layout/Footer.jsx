@@ -51,7 +51,7 @@ import React from 'react';
             </div>
 
             <div className="mt-12 border-t border-primary/30 pt-8 text-center text-sm font-sans">
-              <p>&copy; {currentYear} AngelinoWash. Keepin' it clean since '25.</p>
+              <p>&copy; {currentYear} Legacy Car Care. Keepin' it clean since '95.</p>
               <p className="mt-1">
                 <Link to="/privacy-policy" className="hover:text-primary transition-colors">Privacy</Link> | 
                 <Link to="/terms-of-service" className="hover:text-primary transition-colors ml-1">Terms</Link>
