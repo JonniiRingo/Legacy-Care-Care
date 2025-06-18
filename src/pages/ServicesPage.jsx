@@ -13,7 +13,7 @@ import React from 'react';
         description: "Mean exterior hand wash, wheel grime bustin', tire shine, and glass so clear it's criminal.",
         price: "$59",
         features: ["Hand Wash & Dry", "Wheel De-grease", "Tire Blackout", "Crystal Clear Glass"],
-        imageName: "Classic car exterior wash"
+        imageName: '/images/the_quick_slick.png'
       },
       {
         id: 2,
@@ -22,7 +22,7 @@ import React from 'react';
         description: "Full gut vacuum, dash & console wipe down, spotless glass, and door jambs so clean you can eat off 'em.",
         price: "$89",
         features: ["Deep Vacuum", "Dashboard Detail", "Interior Glass Polish", "Door Jamb Degrease"],
-        imageName: "Vintage car interior detailing"
+        imageName: '/images/the_inner_sanctum.png'
       },
       {
         id: 3,
@@ -31,7 +31,7 @@ import React from 'react';
         description: "The whole shebang: Quick Slick + Inner Sanctum, plus a slick coat of wax that'll make water fear your ride.",
         price: "$169",
         features: ["Quick Slick Exterior", "Inner Sanctum Interior", "Hand Wax & Buff", "Road Rebel Air Freshener"],
-        imageName: "Fully detailed hot rod"
+        imageName: '/images/the_full_monte.png'
       },
       {
         id: 4,
@@ -40,7 +40,7 @@ import React from 'react';
         description: "Ceramic armor for your paint. Serious long-term shine & protection. Includes full decon.",
         price: "$549",
         features: ["Full Paint Decontamination", "Clay Bar Smoothness", "Pro Ceramic Coating", "Insane Gloss & Hydrophobics"],
-        imageName: "Applying ceramic coating to muscle car"
+        imageName: '/images/the_iron_fortress.png'
       },
     ];
 
@@ -79,7 +79,8 @@ import React from 'react';
                     <img 
                       className="w-full h-56 object-cover rounded-md mb-6 shadow-lg border-2 border-greaser-silver/20"
                       alt={service.title}
-                     src="https://images.unsplash.com/photo-1605638230909-215993175004" />
+                     src={service.imageName}
+                     />
                     <ul className="space-y-2 mb-4 font-sans">
                       {service.features.map((feature, i) => (
                         <li key={i} className="flex items-center text-greaser-silver">

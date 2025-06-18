@@ -21,7 +21,7 @@ import React from 'react';
                   <a href="#" target="_blank" rel="noopener noreferrer" className="text-greaser-silver hover:text-primary transition-colors">
                     <Facebook className="h-7 w-7" />
                   </a>
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-greaser-silver hover:text-primary transition-colors">
+                  <a href="https://www.instagram.com/legacy_car_care/" target="_blank" rel="noopener noreferrer" className="text-greaser-silver hover:text-primary transition-colors">
                     <Instagram className="h-7 w-7" />
                   </a>
                   <a href="#" target="_blank" rel="noopener noreferrer" className="text-greaser-silver hover:text-primary transition-colors">
@@ -43,8 +43,8 @@ import React from 'react';
               <div>
                 <p className="font-bangers text-2xl text-greaser-cream mb-4 text-shadow-soft">Holler At Us</p>
                 <ul className="space-y-2 font-sans">
-                  <li><span className="text-sm">Email: yo@angelinowash.com</span></li>
-                  <li><span className="text-sm">Call/Text: (310) 555-WASH</span></li>
+                  <li><span className="text-sm">Email: noebenyisrael@gmail.com</span></li>
+                  <li><span className="text-sm">Call/Text: (526) 243-9350</span></li>
                   <li><span className="text-sm">Cruisin' All Over LA</span></li>
                 </ul>
               </div>
