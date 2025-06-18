@@ -53,7 +53,7 @@ import React, { useState } from 'react';
         >
           <div className="flex items-center space-x-3 text-primary mb-10">
             <Sparkles className="h-16 w-16 text-greaser-gold animate-pulse" />
-            <span className="text-6xl font-bangers text-greaser-cream text-shadow-hard">AngelinoWash</span>
+            <span className="text-6xl font-bangers text-greaser-cream text-shadow-hard">Legacy Car Care</span>
           </div>
           <Tabs defaultValue="login" className="w-full max-w-md">
             <TabsList className="grid w-full grid-cols-2 bg-greaser-charcoal/50 border border-primary/30 p-1 rounded-lg">

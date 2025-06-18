@@ -74,7 +74,7 @@ import React, { useState } from 'react';
             <div className="flex items-center justify-between h-20">
               <Link to="/" className="flex items-center space-x-2 text-primary hover:text-greaser-red/80 transition-colors group">
                 <Sparkles className="h-10 w-10 text-greaser-gold group-hover:animate-pulse" />
-                <span className="text-3xl font-bangers tracking-wider text-greaser-cream text-shadow-soft">AngelinoWash</span>
+                <span className="text-3xl font-bangers tracking-wider text-greaser-cream text-shadow-soft">Legacy Car Care</span>
               </Link>
 
               <div className="hidden md:flex items-center space-x-6">

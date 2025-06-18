@@ -48,7 +48,7 @@ import React from 'react';
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                AngelinoWash: Mobile detailing with that classic LA grit &amp; shine. We make your machine look mean.
+                Legacy Car Care: Mobile detailing with that classic LA grit &amp; shine. We make your machine look mean.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -108,7 +108,7 @@ import React from 'react';
                 <img 
                   className="rounded-lg shadow-2xl aspect-video object-cover border-4 border-greaser-gold/50 transform transition-all duration-500 hover:scale-105 hover:shadow-greaser-gold/40"
                   alt="Classic car getting detailed with graffiti background"
-                 src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d" />
+                 src="/images/how_it_rolls.png" />
                  <div className="absolute -bottom-4 -right-4 -z-10 w-full h-full bg-primary/50 rounded-lg blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
               </div>
               <div>

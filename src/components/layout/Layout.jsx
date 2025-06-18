@@ -61,7 +61,7 @@ import React, { useState } from 'react';
               >
                 <Card className="shadow-2xl bg-card border-primary/50">
                   <CardHeader className="bg-primary/10 p-4">
-                    <CardTitle className="text-lg font-script text-primary">AngelinoWash Assistant</CardTitle>
+                    <CardTitle className="text-lg font-script text-primary">Legacy Car Care Assistant</CardTitle>
                   </CardHeader>
                   <CardContent className="p-0">
                     <div className="h-80 overflow-y-auto p-4 space-y-3 bg-background/50">

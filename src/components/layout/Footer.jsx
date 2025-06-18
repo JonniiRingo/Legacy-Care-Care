@@ -12,7 +12,7 @@ import React from 'react';
               <div>
                 <Link to="/" className="flex items-center space-x-2 text-primary mb-4 group">
                   <Sparkles className="h-10 w-10 text-greaser-gold group-hover:animate-pulse" />
-                  <span className="text-3xl font-bangers tracking-wider text-greaser-cream text-shadow-soft">AngelinoWash</span>
+                  <span className="text-3xl font-bangers tracking-wider text-greaser-cream text-shadow-soft">Legacy Car Car</span>
                 </Link>
                 <p className="text-sm font-sans">
                   Old school cool, new school clean. Your ride, our pride.
