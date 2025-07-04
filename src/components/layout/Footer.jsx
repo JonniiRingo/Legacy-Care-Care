@@ -18,7 +18,7 @@ import React from 'react';
                   Old school cool, new school clean. Your ride, our pride.
                 </p>
                 <div className="flex space-x-4 mt-6">
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="text-greaser-silver hover:text-primary transition-colors">
+                  <a href="https://www.facebook.com/profile.php?id=100067733799526&mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" className="text-greaser-silver hover:text-primary transition-colors">
                     <Facebook className="h-7 w-7" />
                   </a>
                   <a href="https://www.instagram.com/legacy_car_care/" target="_blank" rel="noopener noreferrer" className="text-greaser-silver hover:text-primary transition-colors">
