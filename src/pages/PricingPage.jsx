@@ -7,9 +7,9 @@ import React from 'react';
 
     const pricingPackages = [
       {
-        name: "The Greaser",
-        price: "$79",
-        frequency: "Essential Shine",
+        name: "Legacy Signature Wash",
+        price: "$65",
+        frequency: "& Essential Shine",
         features: [
           "Badass Exterior Wash",
           "Wheel & Tire Clean",
