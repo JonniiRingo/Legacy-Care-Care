@@ -6,6 +6,7 @@
     import ServicesPage from '@/pages/ServicesPage';
     import PricingPage from '@/pages/PricingPage';
     import SchedulePage from '@/pages/SchedulePage';
+    import  BaseServicePage from '@pages/BaseServicePage';
     import AuthPage from '@/pages/AuthPage';
     import CheckoutPage from '@/pages/CheckoutPage';
     import NotFoundPage from '@/pages/NotFoundPage';
@@ -24,6 +25,7 @@
                 <Route path="schedule" element={<SchedulePage />} />
                 <Route path="auth" element={<AuthPage />} />
                 <Route path="checkout" element={<CheckoutPage />} />
+                <Route path= "base" element={<BaseServicesPage />}
                 {/* Add more specific pages like FAQ, Contact, Profile etc. here */}
                 <Route path="faq" element={<PlaceholderPage title="FAQ" />} />
                 <Route path="contact" element={<PlaceholderPage title="Contact Us" />} />
