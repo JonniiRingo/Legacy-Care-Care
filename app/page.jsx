@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
     import { Button } from '@/components/ui/button';
     import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
     import { CheckCircle, Sparkles, Zap } from 'lucide-react';
@@ -12,7 +13,7 @@ import Link from 'next/link';
         {
           icon: <Sparkles className="h-12 w-12 text-greaser-gold" />,
           title: "Killer Shine",
-          description: "Top-shelf potions for a gleam that'll make heads turn.",
+          description: "Top-shelf potions for a gleam that&apos;ll make heads turn.",
         },
         {
           icon: <Zap className="h-12 w-12 text-greaser-teal" />,
@@ -72,7 +73,7 @@ import Link from 'next/link';
             viewport={{ once: true, amount: 0.2 }}
             transition={{ staggerChildren: 0.25 }}
           >
-            <h2 className="text-5xl font-bangers text-center mb-16 text-greaser-cream text-shadow-hard">Why We're The Joint</h2>
+            <h2 className="text-5xl font-bangers text-center mb-16 text-greaser-cream text-shadow-hard">Why We&apos;re The Joint</h2>
             <div className="grid md:grid-cols-3 gap-8">
               {features.map((feature, index) => (
                 <motion.div
@@ -107,10 +108,13 @@ import Link from 'next/link';
           >
             <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
               <div className="relative">
-                <img 
+                <Image 
                   className="rounded-lg shadow-2xl aspect-video object-cover border-4 border-greaser-gold/50 transform transition-all duration-500 hover:scale-105 hover:shadow-greaser-gold/40"
                   alt="Classic car getting detailed with graffiti background"
-                 src="/images/how_it_rolls.png" />
+                  src="/images/how_it_rolls.png"
+                  width={800}
+                  height={450}
+                />
                  <div className="absolute -bottom-4 -right-4 -z-10 w-full h-full bg-primary/50 rounded-lg blur-lg opacity-50 group-hover:opacity-75 transition-opacity"></div>
               </div>
               <div>
@@ -148,7 +152,7 @@ import Link from 'next/link';
           >
             <h2 className="text-5xl font-bangers text-greaser-cream mb-6 text-shadow-hard">Ready To Ride Clean?</h2>
             <p className="text-lg text-greaser-silver mb-10 max-w-xl mx-auto font-sans">
-              LA's finest grease monkeys are ready to make your car shine. Don't be a square, book it!
+              LA&apos;s finest grease monkeys are ready to make your car shine. Don&apos;t be a square, book it!
             </p>
             <Button asChild size="lg" className="bg-gradient-to-r from-primary to-greaser-gold hover:from-greaser-gold hover:to-primary text-greaser-charcoal font-bold px-12 py-8 text-xl rounded-lg shadow-lg hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300">
               <Link href="/schedule">Get Your Shine On</Link>

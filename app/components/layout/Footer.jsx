@@ -47,13 +47,13 @@ import Link from 'next/link';
                 <ul className="space-y-2 font-sans">
                   <li><span className="text-sm">Email: noebenyisrael@gmail.com</span></li>
                   <li><span className="text-sm">Call/Text: (526) 243-9350</span></li>
-                  <li><span className="text-sm">Cruisin' All Over LA</span></li>
+                  <li><span className="text-sm">Cruisin&apos; All Over LA</span></li>
                 </ul>
               </div>
             </div>
 
             <div className="mt-12 border-t border-primary/30 pt-8 text-center text-sm font-sans">
-              <p>&copy; {currentYear} Legacy Car Care. Keepin' it clean since '95.</p>
+              <p>&copy; {currentYear} Legacy Car Care. Keepin&apos; it clean since &apos;95.</p>
               <p className="mt-1">
                 <Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy</Link> | 
                 <Link href="/terms-of-service" className="hover:text-primary transition-colors ml-1">Terms</Link>

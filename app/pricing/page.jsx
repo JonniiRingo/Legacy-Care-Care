@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Button } from '@/components/ui/button';
 import { Check, Star } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
     import { motion } from 'framer-motion';
 
     const pricingPackages = [
@@ -91,10 +92,13 @@ import Link from 'next/link';
                     <p className={`text-5xl font-bangers mt-4 ${pkg.popular ? 'text-greaser-gold' : 'text-greaser-cream'} text-shadow-soft`}>{pkg.price}</p>
                   </CardHeader>
                   <CardContent className="flex-grow p-8 space-y-4">
-                    <img 
+                    <Image 
                       className="w-full h-48 object-cover rounded-md mb-6 shadow-lg border-2 border-greaser-silver/20"
                       alt={`${pkg.name} package example car`}
-                     src="https://images.unsplash.com/photo-1541443131839-7938d0273930" />
+                      src="https://images.unsplash.com/photo-1541443131839-7938d0273930"
+                      width={600}
+                      height={192}
+                    />
                     <ul className="space-y-3 font-sans">
                       {pkg.features.map((feature) => (
                         <li key={feature} className="flex items-start">
@@ -122,7 +126,7 @@ import Link from 'next/link';
           >
             <h2 className="text-4xl font-bangers text-greaser-cream mb-4 text-shadow-hard">Got A Special Project?</h2>
             <p className="text-greaser-silver mb-8 max-w-lg mx-auto font-sans">
-              Fleet of lowriders? Garage full of classics? Hit us up. We'll talk turkey.
+              Fleet of lowriders? Garage full of classics? Hit us up. We&apos;ll talk turkey.
             </p>
             <Button asChild size="lg" className="bg-gradient-to-r from-primary to-greaser-gold hover:from-greaser-gold hover:to-primary text-greaser-charcoal font-bold shadow-lg hover:shadow-primary/50">
               <Link href="/contact">Talk To The Boss</Link>

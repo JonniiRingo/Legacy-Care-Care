@@ -19,7 +19,7 @@ const NotFoundPage = () => {
       <h1 className="text-6xl font-poppins font-extrabold text-foreground mb-4">404</h1>
       <h2 className="text-3xl font-semibold text-foreground mb-6">Oops! Page Not Found.</h2>
       <p className="text-lg text-muted-foreground mb-10 max-w-md">
-        It seems like the page you're looking for took a wrong turn. Don't worry, it happens to the best of us!
+        It seems like the page you&apos;re looking for took a wrong turn. Don&apos;t worry, it happens to the best of us!
       </p>
       <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
         <Link href="/">Go Back to Homepage</Link>

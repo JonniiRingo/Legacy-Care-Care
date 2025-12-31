@@ -62,7 +62,7 @@ import { useRouter } from 'next/navigation';
 
         toast({
           title: "Booked In, Boss!",
-          description: `We got your request for ${selectedDate.toLocaleDateString()} at ${selectedTime}. We'll buzz ya to confirm.`,
+          description: `We got your request for ${selectedDate.toLocaleDateString()} at ${selectedTime}. We&apos;ll buzz ya to confirm.`,
           className: "bg-greaser-teal text-greaser-charcoal border-greaser-teal font-sans",
         });
         
@@ -87,7 +87,7 @@ import { useRouter } from 'next/navigation';
           >
             <h1 className="text-5xl font-bangers text-greaser-cream mb-4 text-shadow-hard">Lock In Your Shine Time</h1>
             <p className="text-lg text-greaser-silver font-sans">
-              Pick a slot, tell us where to roll. We'll handle the rest.
+              Pick a slot, tell us where to roll. We&apos;ll handle the rest.
             </p>
           </motion.div>
 
@@ -163,16 +163,16 @@ import { useRouter } from 'next/navigation';
 
                   <div className="space-y-2">
                     <Label htmlFor="address" className="flex items-center font-sans text-greaser-silver">
-                      <MapPin className="mr-2 h-5 w-5 text-greaser-gold" /> Where's The Party At? (Address)
+                      <MapPin className="mr-2 h-5 w-5 text-greaser-gold" /> Where&apos;s The Party At? (Address)
                     </Label>
                     <Input id="address" placeholder="e.g. 123 Greaser Alley, Los Angeles, CA" value={address} onChange={(e) => setAddress(e.target.value)} required className="bg-input text-foreground placeholder:text-muted-foreground border-greaser-silver/50 focus:border-greaser-teal focus:ring-greaser-teal font-sans" />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="vehicle" className="flex items-center font-sans text-greaser-silver">
-                      <Car className="mr-2 h-5 w-5 text-greaser-gold" /> What's Your Ride? (Make & Model)
+                      <Car className="mr-2 h-5 w-5 text-greaser-gold" /> What&apos;s Your Ride? (Make & Model)
                     </Label>
-                    <Input id="vehicle" placeholder="e.g. '57 Chevy Bel Air" value={vehicleDetails} onChange={(e) => setVehicleDetails(e.target.value)} required className="bg-input text-foreground placeholder:text-muted-foreground border-greaser-silver/50 focus:border-greaser-teal focus:ring-greaser-teal font-sans" />
+                    <Input id="vehicle" placeholder="e.g. &apos;57 Chevy Bel Air" value={vehicleDetails} onChange={(e) => setVehicleDetails(e.target.value)} required className="bg-input text-foreground placeholder:text-muted-foreground border-greaser-silver/50 focus:border-greaser-teal focus:ring-greaser-teal font-sans" />
                   </div>
                   
                   <div className="space-y-2">

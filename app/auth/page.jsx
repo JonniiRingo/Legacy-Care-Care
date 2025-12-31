@@ -30,7 +30,7 @@ import { useRouter } from 'next/navigation';
         }
         const mockUser = { email: loginEmail, name: loginEmail.split('@')[0] };
         login(mockUser);
-        toast({ title: "You're In!", description: `Welcome back, ${mockUser.name}! Let's get rollin'.`, className: "bg-greaser-teal text-greaser-charcoal border-greaser-teal font-sans" });
+        toast({ title: "You&apos;re In!", description: `Welcome back, ${mockUser.name}! Let&apos;s get rollin&apos;.`, className: "bg-greaser-teal text-greaser-charcoal border-greaser-teal font-sans" });
         router.push('/');
       };
 
@@ -42,7 +42,7 @@ import { useRouter } from 'next/navigation';
         }
         const newUser = { email: signupEmail, name: signupName };
         login(newUser);
-        toast({ title: "Welcome Aboard!", description: `Alright, ${newUser.name}, you're one of us now!`, className: "bg-greaser-teal text-greaser-charcoal border-greaser-teal font-sans" });
+        toast({ title: "Welcome Aboard!", description: `Alright, ${newUser.name}, you&apos;re one of us now!`, className: "bg-greaser-teal text-greaser-charcoal border-greaser-teal font-sans" });
         router.push('/');
       };
 
@@ -91,7 +91,7 @@ import { useRouter } from 'next/navigation';
               <Card className="border-2 border-greaser-teal/70 shadow-xl bg-card-texture mt-2">
                 <CardHeader>
                   <CardTitle className="text-3xl font-bangers text-greaser-teal text-center">Join The Crew!</CardTitle>
-                  <CardDescription className="text-center text-greaser-silver font-sans">New around here? Let's get you set up.</CardDescription>
+                  <CardDescription className="text-center text-greaser-silver font-sans">New around here? Let&apos;s get you set up.</CardDescription>
                 </CardHeader>
                 <form onSubmit={handleSignup}>
                   <CardContent className="space-y-6 p-6">
