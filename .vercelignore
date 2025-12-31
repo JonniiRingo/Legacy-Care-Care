@@ -1,0 +1,6 @@
+src.backup/
+src/
+*.bak
+*.backup
+.vite/
+

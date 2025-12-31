@@ -543,4 +543,10 @@ dist
 **/.env
 **/.env.*
 node_modules/
-.gitignore copy
+
+# Backup files
+*.bak
+*.backup
+src.backup/
+vite.config.js.bak
+index.html.bak
