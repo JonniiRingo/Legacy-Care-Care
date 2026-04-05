@@ -14,3 +14,6 @@ export default function FAQPage() {
   return <PlaceholderPage title="FAQ" />;
 }
 
+
+
+

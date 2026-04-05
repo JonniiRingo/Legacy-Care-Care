@@ -14,3 +14,6 @@ export default function ProfilePage() {
   return <PlaceholderPage title="User Profile" />;
 }
 
+
+
+
